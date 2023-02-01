@@ -4,9 +4,10 @@ let randomDamage = () => {
 };
 
 const chooseOption = (opt1, opt2) => {
-    let randNum = Math.floor(Math.random() * 2) == 0 ? opt1 : opt2;
-    return randNum;
-};
+    let randNum = Math.floor(Math.random());
+    return randNum === 0 ? opt1 : opt2}
+
+    //terneray operator like:if else 
 console.log(chooseOption);
 
 let attackPlayer = function (health) {
@@ -18,14 +19,13 @@ let logHealth = (player, health) => {
 let logDeath = (winner, loser) => {
     console.log(`${winner} defeated ${loser}`);
 };
-let isDead = (health) => {
-    if (health <= 0) {
-        return true;
-    } else {
-        return false;
+let isDead = (health) => health <= 0 ? true : false; 
+    //     return true;
+    // } else {
+    //     return false;
         // can be ternery
-    }
-};
+    
+
 function fight(player1, player2, player1Health, player2Health) {
     while (true) {
         let attacker = chooseOption(player1, player2);
@@ -35,7 +35,8 @@ function fight(player1, player2, player1Health, player2Health) {
             if (isDead(player2Health)) {
                 logDeath(player1, player2);
                 break;
-            } else {
+            }
+        } else {
                 player1Health = attackPlayer(player1Health);
                 logHealth(player1, player1Health);
                 if (isDead(player1Health)) {
@@ -45,7 +46,7 @@ function fight(player1, player2, player1Health, player2Health) {
             }
         }
     }
-}
+
 fight("Phillip", "Franklin", 200, 200);
 
 // TODO - write your code here.
